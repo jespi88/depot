@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+  skip_before_filter :authorize, :only => :create
+  
   # GET /line_items
   # GET /line_items.xml
   def index
@@ -82,6 +84,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(line_items_url) }
+      format.js
       format.xml  { head :ok }
     end
   end
